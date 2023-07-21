@@ -1,0 +1,53 @@
+<%- include("partials/header.ejs") %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/main.css">
+        <title>To do list</title>
+    </head>
+
+    <body>
+
+        <div class="main title container">
+            <h1>
+                <%= currentDay %>, <%= currentMonth %>
+                        <%= currentDate %>
+            </h1>
+        </div>
+        <div class="main">
+            <div class="container">
+                <% for(var i=0; i < newList2.length; i++) { %>
+                    <% if(i>0) { %>
+                        <div class="item i">
+                            <input type="checkbox" name="name">
+                            <p>
+                                <%= newList2[i] %>
+                            </p>
+                        </div>
+                        <% } else { %>
+                            <div class="item">
+                                <input type="checkbox" name="name">
+                                <p>
+                                    <%= newList2[i] %>
+                                </p>
+                            </div>
+                            <% } %>
+                                <% } %>
+                                    <div class="item main">
+                                        <form action="/work" method="post">
+                                            <input class="input" type="text" name="itemW" placeholder="New Item"
+                                                autocomplete="off">
+                                            <button class="button" type="submit" name="buttonW">+</button>
+                                        </form>
+                                    </div>
+            </div>
+        </div>
+        <footer>
+            Copyright © prajna vegi
+        </footer>
+    </body>
+
+    </html>
