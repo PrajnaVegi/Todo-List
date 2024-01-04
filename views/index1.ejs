@@ -11,7 +11,7 @@
 
     <body>
 
-        <div class="main title container">
+        <div class="item container ">
             <h1>
                 <%= currentDay %>, <%= currentMonth %>
                         <%= currentDate %>
@@ -19,34 +19,27 @@
         </div>
         <div class="main">
             <div class="container">
-
-                <% for(var i=0; i < newList1.length; i++) { %>
-
-                    <% if(i>0) { %>
-                        <div class="item i">
-                            
-                            <input type="checkbox" name="name">
+                <%newList1.forEach(function(item){ %>
+                    <form action="/delete" method="post">
+                        <div class="item">
+                            <input type="checkbox" name="checkbox" value="<%=item._id%>" class="check"
+                                onChange="this.form.submit()">
                             <p>
-                                <%= newList1[i] %>
+                                <%= item.name %>
                             </p>
-                        </div>
-                        <% } else { %>
-                            <div class="item">
-                                <input type="checkbox" name="name">
-                                <p>
-                                    <%= newList1[i] %>
-                                </p>
-                            </div>
-                            <% } %>
-                                <% } %>
 
-                                    <div class="item main">
-                                        <form action="/" method="post">
-                                            <input class="input" type="text" name="itemT" placeholder="New Item"
-                                                autocomplete="off">
-                                            <button class="button" type="submit" name="buttonT">+</button>
-                                        </form>
-                                    </div>
+                        </div>
+                    </form>
+                    <% }) %>
+                        <form action="/" method="post">
+                            <div class="form-container ">
+                                <div class="input-container">
+                                    <input class="input" type="text" name="item" placeholder="New Item"
+                                        autocomplete="off">
+                                    <button class="button" type="submit" name="button">+</button>
+                                </div>
+                            </div>
+                        </form>
             </div>
         </div>
         <footer>
